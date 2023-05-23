@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.demo.mapper.TblZongjqMapper">
+    
+    <resultMap type="TblZongjq" id="TblZongjqResult">
+        <result property="type"    column="type"    />
+        <result property="time"    column="time"    />
+        <result property="gxAddress"    column="gx_address"    />
+        <result property="jjdType"    column="jjd_type"    />
+        <result property="cjAddress"    column="cj_address"    />
+    </resultMap>
+
+    <sql id="selectTblZongjqVo">
+        select type, time, gx_address, jjd_type, cj_address from tbl_zongjq
+    </sql>
+
+    <select id="selectTblZongjqList" parameterType="TblZongjq" resultMap="TblZongjqResult">
+        <include refid="selectTblZongjqVo"/>
+        <where>  
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="time != null  and time != ''"> and time = #{time}</if>
+            <if test="gxAddress != null  and gxAddress != ''"> and gx_address = #{gxAddress}</if>
+            <if test="jjdType != null  and jjdType != ''"> and jjd_type = #{jjdType}</if>
+            <if test="cjAddress != null  and cjAddress != ''"> and cj_address = #{cjAddress}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblZongjqByType" parameterType="String" resultMap="TblZongjqResult">
+        <include refid="selectTblZongjqVo"/>
+        where type = #{type}
+    </select>
+        
+    <insert id="insertTblZongjq" parameterType="TblZongjq">
+        insert into tbl_zongjq
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null">type,</if>
+            <if test="time != null">time,</if>
+            <if test="gxAddress != null">gx_address,</if>
+            <if test="jjdType != null">jjd_type,</if>
+            <if test="cjAddress != null">cj_address,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null">#{type},</if>
+            <if test="time != null">#{time},</if>
+            <if test="gxAddress != null">#{gxAddress},</if>
+            <if test="jjdType != null">#{jjdType},</if>
+            <if test="cjAddress != null">#{cjAddress},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblZongjq" parameterType="TblZongjq">
+        update tbl_zongjq
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="time != null">time = #{time},</if>
+            <if test="gxAddress != null">gx_address = #{gxAddress},</if>
+            <if test="jjdType != null">jjd_type = #{jjdType},</if>
+            <if test="cjAddress != null">cj_address = #{cjAddress},</if>
+        </trim>
+        where type = #{type}
+    </update>
+
+    <update id="truncateTable" parameterType="TblZongjq">
+    truncate table tbl_Zongjq
+     </update>
+    <delete id="deleteTblZongjqByType" parameterType="String">
+        delete from tbl_zongjq where type = #{type}
+    </delete>
+
+
+    <delete id="deleteTblZongjqByTypes" parameterType="String">
+        delete from tbl_zongjq where type in 
+        <foreach item="type" collection="array" open="(" separator="," close=")">
+            #{type}
+        </foreach>
+    </delete>
+</mapper>

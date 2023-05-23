@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.demo.mapper.TblZhianMapper">
+    
+    <resultMap type="TblZhian" id="TblZhianResult">
+        <result property="id"    column="id"    />
+        <result property="address"    column="address"    />
+        <result property="time"    column="time"    />
+        <result property="toudaoNum"    column="toudao_num"    />
+        <result property="qiangjieNum"    column="qiangjie_num"    />
+        <result property="qiangduoNum"    column="qiangduo_num"    />
+        <result property="netcheatNum"    column="netcheat_num"    />
+        <result property="killNum"    column="kill_num"    />
+        <result property="jiechiNum"    column="jiechi_num"    />
+        <result property="explorNum"    column="explor_num"    />
+        <result property="rapeNum"    column="rape_num"    />
+        <result property="bangjiaNum"    column="bangjia_num"    />
+        <result property="shehuangNum"    column="shehuang_num"    />
+        <result property="gambleNum"    column="gamble_num"    />
+        <result property="poisonNum"    column="poison_num"    />
+        <result property="limitperNum"    column="limitper_num"    />
+        <result property="gongwuNum"    column="gongwu_num"    />
+        <result property="qiaozhaNum"    column="qiaozha_num"    />
+        <result property="touduNum"    column="toudu_num"    />
+        <result property="hertNum"    column="hert_num"    />
+        <result property="fightNum"    column="fight_num"    />
+        <result property="guaimaiNum"    column="guaimai_num"    />
+        <result property="jiatingNum"    column="jiating_num"    />
+        <result property="sunhuaiNum"    column="sunhuai_num"    />
+        <result property="chuaixiaoNum"    column="chuaixiao_num"    />
+        <result property="other"    column="other"    />
+        <result property="othercheatNum"    column="othercheat_num"    />
+        <result property="weitianNum"    column="weitian_num"    />
+    </resultMap>
+
+    <sql id="selectTblZhianVo">
+        select id, address, time, toudao_num, qiangjie_num, qiangduo_num, netcheat_num, kill_num, jiechi_num, explor_num, rape_num, bangjia_num, shehuang_num, gamble_num, poison_num, limitper_num, gongwu_num, qiaozha_num, toudu_num, hert_num, fight_num, guaimai_num, jiating_num, sunhuai_num, chuaixiao_num, other, othercheat_num, weitian_num from tbl_zhian
+    </sql>
+
+    <select id="selectTblZhianList" parameterType="TblZhian" resultMap="TblZhianResult">
+        <include refid="selectTblZhianVo"/>
+        <where>  
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="time != null  and time != ''"> and time = #{time}</if>
+            <if test="toudaoNum != null "> and toudao_num = #{toudaoNum}</if>
+            <if test="qiangjieNum != null "> and qiangjie_num = #{qiangjieNum}</if>
+            <if test="qiangduoNum != null "> and qiangduo_num = #{qiangduoNum}</if>
+            <if test="netcheatNum != null "> and netcheat_num = #{netcheatNum}</if>
+            <if test="killNum != null "> and kill_num = #{killNum}</if>
+            <if test="jiechiNum != null "> and jiechi_num = #{jiechiNum}</if>
+            <if test="explorNum != null "> and explor_num = #{explorNum}</if>
+            <if test="rapeNum != null "> and rape_num = #{rapeNum}</if>
+            <if test="bangjiaNum != null "> and bangjia_num = #{bangjiaNum}</if>
+            <if test="shehuangNum != null "> and shehuang_num = #{shehuangNum}</if>
+            <if test="gambleNum != null "> and gamble_num = #{gambleNum}</if>
+            <if test="poisonNum != null "> and poison_num = #{poisonNum}</if>
+            <if test="limitperNum != null "> and limitper_num = #{limitperNum}</if>
+            <if test="gongwuNum != null "> and gongwu_num = #{gongwuNum}</if>
+            <if test="qiaozhaNum != null "> and qiaozha_num = #{qiaozhaNum}</if>
+            <if test="touduNum != null "> and toudu_num = #{touduNum}</if>
+            <if test="hertNum != null "> and hert_num = #{hertNum}</if>
+            <if test="fightNum != null "> and fight_num = #{fightNum}</if>
+            <if test="guaimaiNum != null "> and guaimai_num = #{guaimaiNum}</if>
+            <if test="jiatingNum != null "> and jiating_num = #{jiatingNum}</if>
+            <if test="sunhuaiNum != null "> and sunhuai_num = #{sunhuaiNum}</if>
+            <if test="chuaixiaoNum != null "> and chuaixiao_num = #{chuaixiaoNum}</if>
+            <if test="other != null "> and other = #{other}</if>
+            <if test="othercheatNum != null "> and othercheat_num = #{othercheatNum}</if>
+            <if test="weitianNum != null "> and weitian_num = #{weitianNum}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblZhianById" parameterType="Long" resultMap="TblZhianResult">
+        <include refid="selectTblZhianVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTblZhian" parameterType="TblZhian">
+        insert into tbl_zhian
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="address != null">address,</if>
+            <if test="time != null">time,</if>
+            <if test="toudaoNum != null">toudao_num,</if>
+            <if test="qiangjieNum != null">qiangjie_num,</if>
+            <if test="qiangduoNum != null">qiangduo_num,</if>
+            <if test="netcheatNum != null">netcheat_num,</if>
+            <if test="killNum != null">kill_num,</if>
+            <if test="jiechiNum != null">jiechi_num,</if>
+            <if test="explorNum != null">explor_num,</if>
+            <if test="rapeNum != null">rape_num,</if>
+            <if test="bangjiaNum != null">bangjia_num,</if>
+            <if test="shehuangNum != null">shehuang_num,</if>
+            <if test="gambleNum != null">gamble_num,</if>
+            <if test="poisonNum != null">poison_num,</if>
+            <if test="limitperNum != null">limitper_num,</if>
+            <if test="gongwuNum != null">gongwu_num,</if>
+            <if test="qiaozhaNum != null">qiaozha_num,</if>
+            <if test="touduNum != null">toudu_num,</if>
+            <if test="hertNum != null">hert_num,</if>
+            <if test="fightNum != null">fight_num,</if>
+            <if test="guaimaiNum != null">guaimai_num,</if>
+            <if test="jiatingNum != null">jiating_num,</if>
+            <if test="sunhuaiNum != null">sunhuai_num,</if>
+            <if test="chuaixiaoNum != null">chuaixiao_num,</if>
+            <if test="other != null">other,</if>
+            <if test="othercheatNum != null">othercheat_num,</if>
+            <if test="weitianNum != null">weitian_num,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="address != null">#{address},</if>
+            <if test="time != null">#{time},</if>
+            <if test="toudaoNum != null">#{toudaoNum},</if>
+            <if test="qiangjieNum != null">#{qiangjieNum},</if>
+            <if test="qiangduoNum != null">#{qiangduoNum},</if>
+            <if test="netcheatNum != null">#{netcheatNum},</if>
+            <if test="killNum != null">#{killNum},</if>
+            <if test="jiechiNum != null">#{jiechiNum},</if>
+            <if test="explorNum != null">#{explorNum},</if>
+            <if test="rapeNum != null">#{rapeNum},</if>
+            <if test="bangjiaNum != null">#{bangjiaNum},</if>
+            <if test="shehuangNum != null">#{shehuangNum},</if>
+            <if test="gambleNum != null">#{gambleNum},</if>
+            <if test="poisonNum != null">#{poisonNum},</if>
+            <if test="limitperNum != null">#{limitperNum},</if>
+            <if test="gongwuNum != null">#{gongwuNum},</if>
+            <if test="qiaozhaNum != null">#{qiaozhaNum},</if>
+            <if test="touduNum != null">#{touduNum},</if>
+            <if test="hertNum != null">#{hertNum},</if>
+            <if test="fightNum != null">#{fightNum},</if>
+            <if test="guaimaiNum != null">#{guaimaiNum},</if>
+            <if test="jiatingNum != null">#{jiatingNum},</if>
+            <if test="sunhuaiNum != null">#{sunhuaiNum},</if>
+            <if test="chuaixiaoNum != null">#{chuaixiaoNum},</if>
+            <if test="other != null">#{other},</if>
+            <if test="othercheatNum != null">#{othercheatNum},</if>
+            <if test="weitianNum != null">#{weitianNum},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblZhian" parameterType="TblZhian">
+        update tbl_zhian
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="address != null">address = #{address},</if>
+            <if test="time != null">time = #{time},</if>
+            <if test="toudaoNum != null">toudao_num = #{toudaoNum},</if>
+            <if test="qiangjieNum != null">qiangjie_num = #{qiangjieNum},</if>
+            <if test="qiangduoNum != null">qiangduo_num = #{qiangduoNum},</if>
+            <if test="netcheatNum != null">netcheat_num = #{netcheatNum},</if>
+            <if test="killNum != null">kill_num = #{killNum},</if>
+            <if test="jiechiNum != null">jiechi_num = #{jiechiNum},</if>
+            <if test="explorNum != null">explor_num = #{explorNum},</if>
+            <if test="rapeNum != null">rape_num = #{rapeNum},</if>
+            <if test="bangjiaNum != null">bangjia_num = #{bangjiaNum},</if>
+            <if test="shehuangNum != null">shehuang_num = #{shehuangNum},</if>
+            <if test="gambleNum != null">gamble_num = #{gambleNum},</if>
+            <if test="poisonNum != null">poison_num = #{poisonNum},</if>
+            <if test="limitperNum != null">limitper_num = #{limitperNum},</if>
+            <if test="gongwuNum != null">gongwu_num = #{gongwuNum},</if>
+            <if test="qiaozhaNum != null">qiaozha_num = #{qiaozhaNum},</if>
+            <if test="touduNum != null">toudu_num = #{touduNum},</if>
+            <if test="hertNum != null">hert_num = #{hertNum},</if>
+            <if test="fightNum != null">fight_num = #{fightNum},</if>
+            <if test="guaimaiNum != null">guaimai_num = #{guaimaiNum},</if>
+            <if test="jiatingNum != null">jiating_num = #{jiatingNum},</if>
+            <if test="sunhuaiNum != null">sunhuai_num = #{sunhuaiNum},</if>
+            <if test="chuaixiaoNum != null">chuaixiao_num = #{chuaixiaoNum},</if>
+            <if test="other != null">other = #{other},</if>
+            <if test="othercheatNum != null">othercheat_num = #{othercheatNum},</if>
+            <if test="weitianNum != null">weitian_num = #{weitianNum},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="truncateTable" parameterType="TblZhian">
+    truncate table tbl_zhian
+     </update>
+
+    <delete id="deleteTblZhianById" parameterType="Long">
+        delete from tbl_zhian where id = #{id}
+    </delete>
+
+    <delete id="deleteTblZhianByIds" parameterType="String">
+        delete from tbl_zhian where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

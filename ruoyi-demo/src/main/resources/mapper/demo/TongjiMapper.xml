@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.demo.mapper.TongjiMapper">
+
+    <select id="selectCtqcjq" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(toudao_num+qiangjie_num+qiangduo_num+othercheat_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(toudao_num+qiangjie_num+qiangduo_num+othercheat_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectCtqcjq1" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(toudao_num+qiangjie_num+qiangduo_num+othercheat_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time
+        UNION ALL
+        select address,time,(toudao_num+qiangjie_num+qiangduo_num+othercheat_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time) t
+        GROUP BY time
+    </select>
+
+    <select id="selectDq" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(toudao_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(toudao_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectLq" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(qiangjie_num+qiangduo_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(qiangjie_num+qiangduo_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectQtzp" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(othercheat_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(othercheat_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectTxzp" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(netcheat_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(netcheat_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectDjdo" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(fight_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(fight_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectHd" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(shehuang_num+gamble_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(shehuang_num+gamble_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(shehuang_num+ganmble_num) total from  `tbl_jubao` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectSh" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(shehuang_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(shehuang_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(shehuang_num) total from  `tbl_jubao` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+
+    <select id="selectSd" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(gamble_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(gamble_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time
+        UNION ALL
+        select address,time,(ganmble_num) total from  `tbl_jubao` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY address,time) t
+        GROUP BY address,time
+    </select>
+    <update id="updatejb">
+        UPDATE tbl_jubao a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.ganmble_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '举报%';
+
+        UPDATE tbl_jubao a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.shehuang_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '举报%';
+
+        UPDATE tbl_jubao a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.poison_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '举报%';
+
+        UPDATE tbl_jubao a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.doubious_th = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '举报%';
+    </update>
+
+    <update id="updatexs">
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.toudu_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.qiangjie_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.qiangduo_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.netcheat_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.jiechi_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.shehuang_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.gamble_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.poison_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.fight_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+
+        UPDATE tbl_xingshi a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.othercheat_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type like '刑事%';
+    </update>
+
+    <update id="updateza">
+		UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.toudao_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+        UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.qiangjie_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+        UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.qiangduo_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+        UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.netcheat_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+        UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.othercheat_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+        UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.shehuang_num = b.t_ct
+       WHERE   a.address = b.gx_address  AND a.time = b.time and jjd_type ='治安案件';
+
+       UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.gamble_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+        UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.poison_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+	UPDATE tbl_zhian a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.fight_num = b.t_ct
+        WHERE 	a.address = b.gx_address AND a.time = b.time and jjd_type ='治安案件';
+
+    </update>
+
+
+    <update id="updatetotal">
+        UPDATE tbl_total a,
+        ( SELECT type, jjd_type, COUNT( type ) t_ct, gx_address, time FROM tbl_zongjq GROUP BY jjd_type, type, gx_address ) b
+        SET a.jiefen_num = b.t_ct
+        WHERE a.address = b.gx_address AND a.time = b.time and jjd_type ='纠纷'
+
+
+    </update>
+
+    <update id="updategxadd">
+        UPDATE tbl_zongjq SET gx_address = REPLACE( gx_address, '街道' , '所' );
+    </update>
+
+    <select id="selecall" resultType="com.ruoyi.demo.dto.TblZongqjDto">
+        SELECT gx_address,COUNT(type)t_ct ,time FROM tbl_zongjq GROUP BY time
+    </select>
+    <select id="selectzjjl" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(zongshu_num) total from  `tbl_total` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time) t
+        GROUP BY address,time;
+    </select>
+    <select id="selectxszajf" resultType="com.ruoyi.demo.dto.TblZongqjDto">
+        SELECT gx_address,COUNT(type)t_ct ,time FROM tbl_zongjq
+        WHERE jjd_type LIKE '刑事%'  OR jjd_type LIKE '治安%' AND type='纠纷' GROUP BY time
+    </select>
+    <select id="selectctqc" resultType="com.ruoyi.demo.dto.TblZongqjDto">
+        SELECT gx_address,COUNT(type)t_ct ,time FROM tbl_zongjq
+        WHERE  jjd_type LIKE '传统侵财%' or type like '传统侵财%' GROUP BY time
+    </select>
+    <select id="selecthd" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(shehuang_num+gamble_num) total from  `tbl_xingshi` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time
+        UNION ALL
+        select address,time,(shehuang_num+gamble_num) total from  `tbl_zhian` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time
+        UNION ALL
+        select address,time,(shehuang_num+ganmble_num) total from  `tbl_jubao` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time) t
+        GROUP BY time
+    </select>
+    <select id="selecttxwl" resultType="com.ruoyi.demo.dto.TblZongqjDto">
+        SELECT gx_address,COUNT(type)t_ct ,time FROM tbl_zongjq WHERE  type='通讯网络诈骗' GROUP BY time
+    </select>
+    <select id="selectjf" resultType="com.ruoyi.demo.dto.TblZongqjDto">
+        SELECT gx_address,COUNT(type)t_ct ,time FROM tbl_zongjq WHERE  jjd_type='纠纷' GROUP BY time
+    </select>
+    <select id="selectjtsg" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(jiaotong_num) total from  `tbl_total` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time) t
+        GROUP BY time;
+    </select>
+    <select id="selecthzjq" resultType="com.ruoyi.demo.dto.TotalCount">
+        select address,time,sum(total) total FROM
+        (select address,time,(huozai_num) total from  `tbl_total` where address like '%所'  and address != '柯桥区万绣所' or address = '柯桥区' GROUP BY time) t
+        GROUP BY time;
+    </select>
+    <select id="selectqz" resultType="com.ruoyi.demo.dto.TblZongqjDto">
+        	SELECT gx_address,COUNT(type)t_ct ,time FROM tbl_zongjq WHERE  jjd_type='求助' GROUP BY time
+    </select>
+
+
+</mapper>

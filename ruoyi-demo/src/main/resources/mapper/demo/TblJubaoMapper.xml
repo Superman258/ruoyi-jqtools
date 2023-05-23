@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.demo.mapper.TblJubaoMapper">
+    
+    <resultMap type="TblJubao" id="TblJubaoResult">
+        <result property="id"    column="id"    />
+        <result property="address"    column="address"    />
+        <result property="time"    column="time"    />
+        <result property="shehuangNum"    column="shehuang_num"    />
+        <result property="ganmbleNum"    column="ganmble_num"    />
+        <result property="poisonNum"    column="poison_num"    />
+        <result property="fakeMoney"    column="fake_money"    />
+        <result property="cheatNum"    column="cheat_num"    />
+        <result property="heresyNum"    column="heresy_num"    />
+        <result property="chuanxiaoNum"    column="chuanxiao_num"    />
+        <result property="huanjingNum"    column="huanjing_num"    />
+        <result property="eatmedicaNum"    column="eatmedica_num"    />
+        <result property="dobiousPer"    column="dobious_per"    />
+        <result property="doubiousTh"    column="doubious_th"    />
+        <result property="other"    column="other"    />
+        <result property="weitian"    column="weitian"    />
+    </resultMap>
+
+    <sql id="selectTblJubaoVo">
+        select id, address, time, shehuang_num, ganmble_num, poison_num, fake_money, cheat_num, heresy_num, chuanxiao_num, huanjing_num, eatmedica_num, dobious_per, doubious_th, other, weitian from tbl_jubao
+    </sql>
+
+    <select id="selectTblJubaoList" parameterType="TblJubao" resultMap="TblJubaoResult">
+        <include refid="selectTblJubaoVo"/>
+        <where>  
+            <if test="address != null  and address != ''"> and address = #{address}</if>
+            <if test="time != null  and time != ''"> and time = #{time}</if>
+            <if test="shehuangNum != null "> and shehuang_num = #{shehuangNum}</if>
+            <if test="ganmbleNum != null "> and ganmble_num = #{ganmbleNum}</if>
+            <if test="poisonNum != null "> and poison_num = #{poisonNum}</if>
+            <if test="fakeMoney != null "> and fake_money = #{fakeMoney}</if>
+            <if test="cheatNum != null "> and cheat_num = #{cheatNum}</if>
+            <if test="heresyNum != null "> and heresy_num = #{heresyNum}</if>
+            <if test="chuanxiaoNum != null "> and chuanxiao_num = #{chuanxiaoNum}</if>
+            <if test="huanjingNum != null "> and huanjing_num = #{huanjingNum}</if>
+            <if test="eatmedicaNum != null "> and eatmedica_num = #{eatmedicaNum}</if>
+            <if test="dobiousPer != null "> and dobious_per = #{dobiousPer}</if>
+            <if test="doubiousTh != null "> and doubious_th = #{doubiousTh}</if>
+            <if test="other != null "> and other = #{other}</if>
+            <if test="weitian != null "> and weitian = #{weitian}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblJubaoById" parameterType="Long" resultMap="TblJubaoResult">
+        <include refid="selectTblJubaoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTblJubao" parameterType="TblJubao">
+        insert into tbl_jubao
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="address != null">address,</if>
+            <if test="time != null">time,</if>
+            <if test="shehuangNum != null">shehuang_num,</if>
+            <if test="ganmbleNum != null">ganmble_num,</if>
+            <if test="poisonNum != null">poison_num,</if>
+            <if test="fakeMoney != null">fake_money,</if>
+            <if test="cheatNum != null">cheat_num,</if>
+            <if test="heresyNum != null">heresy_num,</if>
+            <if test="chuanxiaoNum != null">chuanxiao_num,</if>
+            <if test="huanjingNum != null">huanjing_num,</if>
+            <if test="eatmedicaNum != null">eatmedica_num,</if>
+            <if test="dobiousPer != null">dobious_per,</if>
+            <if test="doubiousTh != null">doubious_th,</if>
+            <if test="other != null">other,</if>
+            <if test="weitian != null">weitian,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="address != null">#{address},</if>
+            <if test="time != null">#{time},</if>
+            <if test="shehuangNum != null">#{shehuangNum},</if>
+            <if test="ganmbleNum != null">#{ganmbleNum},</if>
+            <if test="poisonNum != null">#{poisonNum},</if>
+            <if test="fakeMoney != null">#{fakeMoney},</if>
+            <if test="cheatNum != null">#{cheatNum},</if>
+            <if test="heresyNum != null">#{heresyNum},</if>
+            <if test="chuanxiaoNum != null">#{chuanxiaoNum},</if>
+            <if test="huanjingNum != null">#{huanjingNum},</if>
+            <if test="eatmedicaNum != null">#{eatmedicaNum},</if>
+            <if test="dobiousPer != null">#{dobiousPer},</if>
+            <if test="doubiousTh != null">#{doubiousTh},</if>
+            <if test="other != null">#{other},</if>
+            <if test="weitian != null">#{weitian},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblJubao" parameterType="TblJubao">
+        update tbl_jubao
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="address != null">address = #{address},</if>
+            <if test="time != null">time = #{time},</if>
+            <if test="shehuangNum != null">shehuang_num = #{shehuangNum},</if>
+            <if test="ganmbleNum != null">ganmble_num = #{ganmbleNum},</if>
+            <if test="poisonNum != null">poison_num = #{poisonNum},</if>
+            <if test="fakeMoney != null">fake_money = #{fakeMoney},</if>
+            <if test="cheatNum != null">cheat_num = #{cheatNum},</if>
+            <if test="heresyNum != null">heresy_num = #{heresyNum},</if>
+            <if test="chuanxiaoNum != null">chuanxiao_num = #{chuanxiaoNum},</if>
+            <if test="huanjingNum != null">huanjing_num = #{huanjingNum},</if>
+            <if test="eatmedicaNum != null">eatmedica_num = #{eatmedicaNum},</if>
+            <if test="dobiousPer != null">dobious_per = #{dobiousPer},</if>
+            <if test="doubiousTh != null">doubious_th = #{doubiousTh},</if>
+            <if test="other != null">other = #{other},</if>
+            <if test="weitian != null">weitian = #{weitian},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="truncateTable" parameterType="TblJubao">
+        truncate table tbl_jubao
+    </update>
+
+    <delete id="deleteTblJubaoById" parameterType="Long">
+        delete from tbl_jubao where id = #{id}
+    </delete>
+
+    <delete id="deleteTblJubaoByIds" parameterType="String">
+        delete from tbl_jubao where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+</mapper>

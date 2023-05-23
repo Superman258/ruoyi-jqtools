@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.demo.mapper.TblTotalMapper">
+
+    <resultMap type="TblTotal" id="TblTotalResult">
+        <result property="id" column="id"/>
+        <result property="address" column="address"/>
+        <result property="time" column="time"/>
+        <result property="zongshuNum" column="zongshu_num"/>
+        <result property="xingshiNum" column="xingshi_num"/>
+        <result property="zhianNum" column="zhian_num"/>
+        <result property="jiaotongNum" column="jiaotong_num"/>
+        <result property="huozaiNum" column="huozai_num"/>
+        <result property="qiuzhuNum" column="qiuzhu_num"/>
+        <result property="zixunNum" column="zixun_num"/>
+        <result property="jubaoNum" column="jubao_num"/>
+        <result property="tousuNum" column="tousu_num"/>
+        <result property="shijianNum" column="shijian_num"/>
+        <result property="zaihaiNum" column="zaihai_num"/>
+        <result property="jiefenNum" column="jiefen_num"/>
+        <result property="yiliaoNum" column="yiliao_num"/>
+        <result property="jingwuNum" column="jingwu_num"/>
+        <result property="other" column="other"/>
+        <result property="weitian" column="weitian"/>
+    </resultMap>
+
+    <sql id="selectTblTotalVo">
+        select id, address, time, zongshu_num, xingshi_num, zhian_num, jiaotong_num, huozai_num, qiuzhu_num, zixun_num, jubao_num, tousu_num, shijian_num, zaihai_num, jiefen_num, yiliao_num, jingwu_num, other, weitian from tbl_total
+    </sql>
+
+    <select id="selectTblTotalList" parameterType="TblTotal" resultMap="TblTotalResult">
+        <include refid="selectTblTotalVo"/>
+        <where>
+            <if test="address != null  and address != ''">and address = #{address}</if>
+            <if test="time != null  and time != ''">and time = #{time}</if>
+            <if test="zongshuNum != null ">and zongshu_num = #{zongshuNum}</if>
+            <if test="xingshiNum != null ">and xingshi_num = #{xingshiNum}</if>
+            <if test="zhianNum != null ">and zhian_num = #{zhianNum}</if>
+            <if test="jiaotongNum != null ">and jiaotong_num = #{jiaotongNum}</if>
+            <if test="huozaiNum != null ">and huozai_num = #{huozaiNum}</if>
+            <if test="qiuzhuNum != null ">and qiuzhu_num = #{qiuzhuNum}</if>
+            <if test="zixunNum != null ">and zixun_num = #{zixunNum}</if>
+            <if test="jubaoNum != null ">and jubao_num = #{jubaoNum}</if>
+            <if test="tousuNum != null ">and tousu_num = #{tousuNum}</if>
+            <if test="shijianNum != null ">and shijian_num = #{shijianNum}</if>
+            <if test="zaihaiNum != null ">and zaihai_num = #{zaihaiNum}</if>
+            <if test="jiefenNum != null ">and jiefen_num = #{jiefenNum}</if>
+            <if test="yiliaoNum != null ">and yiliao_num = #{yiliaoNum}</if>
+            <if test="jingwuNum != null ">and jingwu_num = #{jingwuNum}</if>
+            <if test="other != null ">and other = #{other}</if>
+            <if test="weitian != null ">and weitian = #{weitian}</if>
+        </where>
+    </select>
+
+    <select id="selectTblTotalById" parameterType="Long" resultMap="TblTotalResult">
+        <include refid="selectTblTotalVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertTblTotal" parameterType="TblTotal">
+        insert into tbl_total
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="address != null">address,</if>
+            <if test="time != null">time,</if>
+            <if test="zongshuNum != null">zongshu_num,</if>
+            <if test="xingshiNum != null">xingshi_num,</if>
+            <if test="zhianNum != null">zhian_num,</if>
+            <if test="jiaotongNum != null">jiaotong_num,</if>
+            <if test="huozaiNum != null">huozai_num,</if>
+            <if test="qiuzhuNum != null">qiuzhu_num,</if>
+            <if test="zixunNum != null">zixun_num,</if>
+            <if test="jubaoNum != null">jubao_num,</if>
+            <if test="tousuNum != null">tousu_num,</if>
+            <if test="shijianNum != null">shijian_num,</if>
+            <if test="zaihaiNum != null">zaihai_num,</if>
+            <if test="jiefenNum != null">jiefen_num,</if>
+            <if test="yiliaoNum != null">yiliao_num,</if>
+            <if test="jingwuNum != null">jingwu_num,</if>
+            <if test="other != null">other,</if>
+            <if test="weitian != null">weitian,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="address != null">#{address},</if>
+            <if test="time != null">#{time},</if>
+            <if test="zongshuNum != null">#{zongshuNum},</if>
+            <if test="xingshiNum != null">#{xingshiNum},</if>
+            <if test="zhianNum != null">#{zhianNum},</if>
+            <if test="jiaotongNum != null">#{jiaotongNum},</if>
+            <if test="huozaiNum != null">#{huozaiNum},</if>
+            <if test="qiuzhuNum != null">#{qiuzhuNum},</if>
+            <if test="zixunNum != null">#{zixunNum},</if>
+            <if test="jubaoNum != null">#{jubaoNum},</if>
+            <if test="tousuNum != null">#{tousuNum},</if>
+            <if test="shijianNum != null">#{shijianNum},</if>
+            <if test="zaihaiNum != null">#{zaihaiNum},</if>
+            <if test="jiefenNum != null">#{jiefenNum},</if>
+            <if test="yiliaoNum != null">#{yiliaoNum},</if>
+            <if test="jingwuNum != null">#{jingwuNum},</if>
+            <if test="other != null">#{other},</if>
+            <if test="weitian != null">#{weitian},</if>
+        </trim>
+    </insert>
+
+    <update id="updateTblTotal" parameterType="TblTotal">
+        update tbl_total
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="address != null">address = #{address},</if>
+            <if test="time != null">time = #{time},</if>
+            <if test="zongshuNum != null">zongshu_num = #{zongshuNum},</if>
+            <if test="xingshiNum != null">xingshi_num = #{xingshiNum},</if>
+            <if test="zhianNum != null">zhian_num = #{zhianNum},</if>
+            <if test="jiaotongNum != null">jiaotong_num = #{jiaotongNum},</if>
+            <if test="huozaiNum != null">huozai_num = #{huozaiNum},</if>
+            <if test="qiuzhuNum != null">qiuzhu_num = #{qiuzhuNum},</if>
+            <if test="zixunNum != null">zixun_num = #{zixunNum},</if>
+            <if test="jubaoNum != null">jubao_num = #{jubaoNum},</if>
+            <if test="tousuNum != null">tousu_num = #{tousuNum},</if>
+            <if test="shijianNum != null">shijian_num = #{shijianNum},</if>
+            <if test="zaihaiNum != null">zaihai_num = #{zaihaiNum},</if>
+            <if test="jiefenNum != null">jiefen_num = #{jiefenNum},</if>
+            <if test="yiliaoNum != null">yiliao_num = #{yiliaoNum},</if>
+            <if test="jingwuNum != null">jingwu_num = #{jingwuNum},</if>
+            <if test="other != null">other = #{other},</if>
+            <if test="weitian != null">weitian = #{weitian},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <update id="truncateTable" parameterType="TblTotal">
+        truncate table tbl_total
+    </update>
+    <delete id="deleteTblTotalById" parameterType="Long">
+        delete from tbl_total where id = #{id}
+    </delete>
+
+    <delete id="deleteTblTotalByIds" parameterType="String">
+        delete from tbl_total where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+</mapper>
